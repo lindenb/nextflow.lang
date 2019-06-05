@@ -1,4 +1,4 @@
-gtksourceview / gedit support for **nextflow** files.
+gtksourceview / gedit support for **nextflow** files ( https://www.nextflow.io ).
 
 ## Installation
 
