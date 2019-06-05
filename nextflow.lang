@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Author: Pierre Lindenbaum PhD @yokofakun
+
+-->
+<language id="nextflow" name="NextFlow" version="2.0" _section="Script">
+<metadata>
+  <property name="mimetypes">text/plain</property>
+  <property name="globs">*.nf;*.nextflow</property>
+  <property name="line-comment-start">//</property>
+  <property name="block-comment-start">/*</property>
+  <property name="block-comment-end">*/</property>
+</metadata>
+
+<styles>
+   <style id="keyword" name="Keyword"  map-to="def:keyword"/>
+   <style id="comment" name="Comment" map-to="def:comment"/>
+   <style id="string" name="String" map-to="def:string"/>
+   <style id="script" name="Script" map-to="def:string"/>
+   <style id="boolean"           _name="Boolean value"             map-to="def:boolean"/>
+   <style id="number"            _name="Number"                    map-to="def:decimal"/>
+       <style id="variable"          _name="Variable"           map-to="def:type"/>
+</styles>
+
+<definitions>
+    <context id="nextflow">
+    <include>
+
+    
+    
+    <context id="nfbody">
+    <include>
+
+    <context id="cc_comment" style-ref="comment">
+          <start>\/\/</start>
+          <end>$</end>
+     </context>
+
+    <context id="c_comment" style-ref="comment">
+          <start>\/\*</start>
+          <end>\*\/</end>
+    </context>
+
+   <context id="null-value" style-ref="null-value">
+      <keyword>null</keyword>
+    </context>
+
+    <context id="boolean" style-ref="boolean">
+      <keyword>false</keyword>
+      <keyword>true</keyword>
+    </context>
+
+    <context id="numeric" style-ref="number">
+      <match extended="true">
+        (\b([0-9]+|0[xX][0-9a-fA-F]+)[Ll]?\b|
+         \b(([0-9]+[Ee][-]?[0-9]+|
+            ([0-9]*\.[0-9]+|[0-9]+\.)([Ee][-]?[0-9]+)?)[fFdD]?|
+            [0-9]+[FfDd]))
+      </match>
+    </context>
+
+
+   <context id="script"  style-ref="script">
+      <start>"""</start>
+      <end>"""</end>
+      <include>
+        <context id="bash-comment" style-ref="comment">
+          <start>#</start>
+          <end>$</end>
+        </context>
+       
+       
+       
+        <context id="script-escape" style-ref="escaped-character">
+          <match>\\.</match>
+        </context>
+        
+        <context id="script-var" style-ref="variable">
+          <match>\${[a-zA-Z_][a-zA-Z0-9_\.]*}</match>
+        </context>
+        
+      </include>
+    </context>
+
+    <context id="string" end-at-line-end="true" style-ref="string">
+      <start>"</start>
+      <end>"</end>
+      <include>
+        <context id="escape" style-ref="escaped-character">
+          <match>\\.</match>
+        </context>
+        <context id="string-var" style-ref="variable">
+          <match>\${[a-zA-Z_][a-zA-Z0-9_\.]*}</match>
+        </context>
+      </include>
+    </context>
+
+    <context id="keywords" style-ref="keyword">
+      <keyword>tag</keyword>
+      <keyword>params</keyword>
+      <keyword>process</keyword>
+      <keyword>Channel</keyword>
+      <keyword>fromPath</keyword>
+      <keyword>from</keyword>
+      <keyword>file</keyword>
+      <keyword>map</keyword>
+      <keyword>collect</keyword>
+      <keyword>when</keyword>
+      <keyword>cups</keyword>
+      <keyword>input</keyword>
+      <keyword>output</keyword>
+      <keyword>script</keyword>
+      <keyword>from</keyword>
+      <keyword>into</keyword>
+      <keyword>set</keyword>
+      <keyword>val</keyword>
+      <keyword>executor</keyword>
+      <keyword>filter</keyword>
+      <keyword>first</keyword>
+      <keyword>last</keyword>
+      <keyword>take</keyword>
+      <keyword>unique</keyword>
+      <keyword>until</keyword>
+    </context>
+</include>
+</context>
+
+
+  </include>
+  </context>
+
+</definitions>
+
+</language>
