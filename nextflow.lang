@@ -14,6 +14,8 @@ Author: Pierre Lindenbaum PhD @yokofakun
 </metadata>
 
 <styles>
+   <style id="channel" name="Channel"  map-to="def:keyword"/>
+   <style id="operator" name="Operator"  map-to="def:keyword"/>
    <style id="keyword" name="Keyword"  map-to="def:keyword"/>
    <style id="comment" name="Comment" map-to="def:comment"/>
    <style id="string" name="String" map-to="def:string"/>
@@ -69,16 +71,17 @@ Author: Pierre Lindenbaum PhD @yokofakun
 	  <match>\${[a-zA-Z_][a-zA-Z0-9_\.]*}</match>
 	</context>
  
-   <context id="script"  style-ref="script" extend-parent="false" class-disabled="no-spell-check">
+   <context id="script"  style-ref="script" 
+           extend-parent="false" 
+           class-disabled="no-spell-check">
       <start>^[ \t]*"""</start>
       <end>^[ \t]*"""</end>
       <include> 
         <context ref="script-escape"/>
         <context ref="script-var"/>
-        <!-- 
-        does not work ? 
+      
         <context ref="sh:sh"/>
-        -->
+    
       </include>
     </context>
 
@@ -91,39 +94,114 @@ Author: Pierre Lindenbaum PhD @yokofakun
       </include>
     </context>
 
+    <context id="channels" style-ref="channel">
+      <keyword>Channel</keyword>
+      <keyword>empty</keyword>
+      <keyword>create</keyword>
+      <keyword>fromPath</keyword>
+      <keyword>fromFilePairs</keyword>
+      <keyword>fromSRA</keyword>
+      <keyword>value</keyword>
+      <keyword>watchPath</keyword>
+      <!-- from --> 
+   </context>
+
     <context id="keywords" style-ref="keyword">
       <keyword>tag</keyword>
       <keyword>params</keyword>
       <keyword>process</keyword>
-      <keyword>Channel</keyword>
-      <keyword>fromPath</keyword>
       <keyword>from</keyword>
       <keyword>file</keyword>
       <keyword>map</keyword>
-      <keyword>collect</keyword>
       <keyword>when</keyword>
-      <keyword>cups</keyword>
+      <keyword>cpus</keyword>
       <keyword>input</keyword>
       <keyword>output</keyword>
       <keyword>script</keyword>
-      <keyword>from</keyword>
       <keyword>into</keyword>
       <keyword>set</keyword>
       <keyword>val</keyword>
       <keyword>executor</keyword>
+      <keyword>afterScript</keyword>
+      <keyword>beforeScript</keyword>
+      <keyword>cache</keyword>
+      <keyword>conda</keyword>
+      <keyword>container</keyword>
+      <keyword>containerOptions</keyword>
+      <keyword>clusterOptions</keyword>
+      <keyword>disk</keyword>
+      <keyword>echo</keyword>
+      <keyword>errorStrategy</keyword>
+      <keyword>executor</keyword>
+      <keyword>ext</keyword>
+      <keyword>label</keyword>
+      <keyword>maxErrors</keyword>
+      <keyword>maxForks</keyword>
+      <keyword>maxRetries</keyword>
+      <keyword>memory</keyword>
+      <keyword>module</keyword>
+      <keyword>penv</keyword>
+      <keyword>pod</keyword>
+      <keyword>publishDir</keyword>
+      <keyword>queue</keyword>
+      <keyword>scratch</keyword>
+      <keyword>stageInMode</keyword>
+      <keyword>stageOutMode</keyword>
+      <keyword>storeDir</keyword>
+      <keyword>tag</keyword>
+      <keyword>time</keyword>
+      <keyword>validExitStatus</keyword>
+
+    </context>
+</include>
+
+</context>
+    <context id="operator" style-ref="keyword">
+      <keyword>map</keyword>
+      <keyword>collect</keyword>
       <keyword>filter</keyword>
       <keyword>first</keyword>
       <keyword>last</keyword>
       <keyword>take</keyword>
       <keyword>unique</keyword>
       <keyword>until</keyword>
+      <keyword>randomSample</keyword>
+
+      <keyword>buffer</keyword>
+      <keyword>collate</keyword>
+      <keyword>flatten</keyword>
+      <keyword>flatMap</keyword>
+      <keyword>groupBy</keyword>
+      <keyword>groupTuple</keyword>
+      <keyword>reduce</keyword>
+      <keyword>toList</keyword>
+      <keyword>toSortedList</keyword>
+      <keyword>transpose</keyword>
+
+      <keyword>choice</keyword>
+      <keyword>separate</keyword>
+      <keyword>route</keyword>
+
+      <keyword>count</keyword>
+      <keyword>countBy</keyword>
+      <keyword>min</keyword>
+      <keyword>max</keyword>
+      <keyword>toInteger</keyword>
+
+      <keyword>dump</keyword>
+      <keyword>set</keyword>
+      <keyword>ifEmpty</keyword>
+      <keyword>print</keyword>
+      <keyword>println</keyword>
+      <keyword>view</keyword>
+      <keyword>close</keyword>
+
+      <keyword>subscribe</keyword>
     </context>
 </include>
 </context>
 
 
-  </include>
-  </context>
 
 </definitions>
 
