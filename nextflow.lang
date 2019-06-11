@@ -74,13 +74,11 @@ Author: Pierre Lindenbaum PhD @yokofakun
    <context id="script"  style-ref="script" 
            extend-parent="false" 
            class-disabled="no-spell-check">
-      <start>^[ \t]*"""</start>
-      <end>^[ \t]*"""</end>
+      <start>^([ \t]*)"""([ \t]*)$</start>
+      <end>^([ \t]*)"""([ \t]*)$</end>
       <include> 
         <context ref="script-escape"/>
         <context ref="script-var"/>
-      
-        <context ref="sh:sh"/>
     
       </include>
     </context>
