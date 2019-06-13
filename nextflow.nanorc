@@ -1,0 +1,16 @@
+# syntax for nextflow
+
+syntax "nextflow" ".*\.(nf|nextflow)$"
+
+
+
+
+color green "(afterScript|beforeScript|buffer|cache|Channel|choice|close|clusterOptions|collate|collect|conda|container|containerOptions|count|countBy|cpus|create|disk|dump|echo|empty|errorStrategy|executor|ext|false|file|filter|first|flatMap|flatten|from|fromFilePairs|fromPath|fromSRA|groupBy|groupTuple|ifEmpty|input|into|label|last|map|max|maxErrors|maxForks|maxRetries|memory|min|module|null|output|params|penv|pod|print|println|process|publishDir|queue|randomSample|reduce|route|scratch|script|separate|set|stageInMode|stageOutMode|storeDir|subscribe|tag|take|time|toInteger|toList|toSortedList|transpose|true|unique|until|val|validExitStatus|value|view|watchPath|when)"
+
+color yellow start="/\*" end="\*/"
+color yellow "//.*"
+
+
+color brightblue start=""""" end="""""
+color red "\$\{[^\}]*\}"
+color yellow "\\"
